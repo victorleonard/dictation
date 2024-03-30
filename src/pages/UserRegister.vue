@@ -25,13 +25,13 @@
       />
 
       <div>
-        <q-btn label="Submit" type="submit" color="primary" />
+        <q-btn label="S'inscrire" type="submit" color="primary" />
         <q-btn
-          label="Reset"
-          type="reset"
-          color="primary"
           flat
+          color="primary"
+          to="/public/login"
           class="q-ml-sm"
+          label="Connexion"
         />
       </div>
     </q-form>
