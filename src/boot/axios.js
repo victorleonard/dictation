@@ -9,8 +9,19 @@ import axios from "axios";
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({ baseURL: "http://127.0.0.1:8000/" });
-api.defaults.headers.common["Authorization"] =
-  "Bearer " + LocalStorage.getItem("dictation_user_token");
+if (LocalStorage.getItem("dictation_user_token")) {
+  api.defaults.headers.common["Authorization"] =
+    "Bearer " + LocalStorage.getItem("dictation_user_token");
+}
+
+api.interceptors.response.use(undefined, function (error) {
+  if (error) {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      LocalStorage.remove("dictation_user_token");
+    }
+  }
+});
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
