@@ -27,8 +27,8 @@
       <div>
         <q-btn label="Connexion" type="submit" color="primary" />
         <q-btn
-          label="Annuler"
-          type="reset"
+          to="/public/register"
+          label="Inscription"
           color="primary"
           flat
           class="q-ml-sm"
@@ -43,6 +43,9 @@ import { ref } from "vue";
 import { api } from "boot/axios";
 import { useQuasar } from "quasar";
 const $q = useQuasar();
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const username = ref("");
 const password = ref("");
@@ -59,6 +62,8 @@ function onSubmit() {
         type: "positive",
         message: "Vous êtes bien connecté",
       });
+      console.log("route pish");
+      router.push("/");
     })
     .catch((e) => {
       $q.notify({
