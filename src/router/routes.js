@@ -18,8 +18,11 @@ const routes = [
     component: () => import("src/layouts/PrivateLayout.vue"),
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
-      { path: "new", component: () => import("pages/NewWord.vue") },
       { path: "list", component: () => import("src/pages/WordsList.vue") },
+      {
+        path: "my-list",
+        component: () => import("src/pages/UserWordsList.vue"),
+      },
     ],
   },
 
