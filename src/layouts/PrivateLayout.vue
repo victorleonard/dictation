@@ -19,8 +19,18 @@
           no-wrap
           icon="school"
           no-caps
-          label="Réviser"
+          label="Mots"
           to="/"
+          class="q-ml-sm q-px-md"
+        />
+        <q-btn
+          flat
+          dense
+          no-wrap
+          icon="school"
+          no-caps
+          label="Verbes"
+          to="/verb"
           class="q-ml-sm q-px-md"
         />
         <!-- <q-btn

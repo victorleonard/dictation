@@ -28,6 +28,7 @@ const columns = [
     label: "Mot",
     field: "value",
     align: "left",
+    sortable: true,
   },
   {
     name: "level",

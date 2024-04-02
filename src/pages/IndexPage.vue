@@ -119,7 +119,7 @@ async function say() {
     text: word.value.value,
     voice: EasySpeech.voices()[82], // optional, will use a default or fallback
     pitch: 1,
-    rate: 0.8,
+    rate: 0.7,
     volume: 1,
     // there are more events, see the API for supported events
     boundary: (e) => console.debug("boundary reached"),
@@ -139,6 +139,11 @@ function check() {
   } else {
     seeWord.value = true;
     result.value = "ko";
+    api.post("/api/word_errors", {
+      word: `/api/words/${word.value.id}`,
+      value: userInput.value,
+      user: `/api/users/${store.user.id}`,
+    });
     console.log("ko");
   }
 }

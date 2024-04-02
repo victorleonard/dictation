@@ -19,9 +19,15 @@ const routes = [
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
       { path: "list", component: () => import("src/pages/WordsList.vue") },
+      { path: "verbs", component: () => import("src/pages/VerbsList.vue") },
+      { path: "verb", component: () => import("src/pages/LearnVerb.vue") },
       {
         path: "my-list",
         component: () => import("src/pages/UserWordsList.vue"),
+      },
+      {
+        path: "admin/:id?",
+        component: () => import("src/pages/UserAdmin.vue"),
       },
     ],
   },
