@@ -32,6 +32,20 @@
           label="Verbes"
           to="/verb"
           class="q-ml-sm q-px-md"
+        >
+          <q-badge color="orange-10" rounded floating
+            >{{ store.learnedVerb.length }} / {{ store.nbVerbs }}</q-badge
+          >
+        </q-btn>
+        <q-btn
+          flat
+          dense
+          no-wrap
+          icon="schedule"
+          no-caps
+          label="Horloge"
+          to="/clock"
+          class="q-ml-sm q-px-md"
         />
         <!-- <q-btn
           flat
@@ -127,6 +141,8 @@ function getMe() {
 onBeforeMount(() => {
   store.getNbWords();
   store.getMyLearnedWords();
+  store.getMyLearnedVerbs();
+  store.getNbVerbs();
   getMe();
 });
 
