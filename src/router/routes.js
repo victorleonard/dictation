@@ -21,6 +21,7 @@ const routes = [
       { path: "list", component: () => import("src/pages/WordsList.vue") },
       { path: "verbs", component: () => import("src/pages/VerbsList.vue") },
       { path: "verb", component: () => import("src/pages/LearnVerb.vue") },
+      { path: "clock", component: () => import("src/pages/LearnClock.vue") },
       {
         path: "my-list",
         component: () => import("src/pages/UserWordsList.vue"),
