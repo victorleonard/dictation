@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <q-card class="q-mb-xl">
-      <q-form @submit="save">
+      <q-form @submit="save" autocomplete="off">
         <q-card-section>
           <div class="text-h6">Enregistrer un nouveau mot</div>
         </q-card-section>

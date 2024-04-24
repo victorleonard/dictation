@@ -1,6 +1,11 @@
 <template>
   <q-page class="flex flex-center">
-    <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+    <q-form
+      @submit="onSubmit"
+      @reset="onReset"
+      class="q-gutter-md"
+      autocomplete="off"
+    >
       <h3>Inscription</h3>
       <q-input
         filled

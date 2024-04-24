@@ -48,7 +48,7 @@
     </div>
     <div class="row q-mb-xl">
       <div class="col">
-        <q-form @submit.prevent.stop="check">
+        <q-form @submit.prevent.stop="check" autocomplete="off">
           <q-card-section class="q-pt-none">
             <q-input
               v-model="newVerb.s1"
@@ -162,6 +162,9 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { api } from "boot/axios";
+import { useUserStore } from "stores/user";
+
+const store = useUserStore();
 
 let isChecking = ref(false);
 let result = ref("");
@@ -191,11 +194,18 @@ function check() {
     verb.value.p3 === newVerb.value.p3
   ) {
     api.put(`/api/users/me/verb/${verb.value.id}`, {}).then(() => {
-      // store.getMyLearnedWords();
+      store.getMyLearnedVerbs();
     });
     result.value = "ok";
   } else {
     result.value = "ko";
+    api.post("/api/logs", {
+      type: "user_answer",
+      module: "verb",
+      answer: newVerb.value,
+      question: verb.value,
+      user: `/api/users/${store.user.id}`,
+    });
   }
 }
 
@@ -214,7 +224,18 @@ function getRandomVerb() {
   result.value = "";
   isChecking.value = false;
   api.get("api/verbs/random").then((res) => {
-    verb.value = res.data;
+    verb.value = {
+      value: res.data.value,
+      time: res.data.time,
+      type: res.data.type,
+      id: res.data.id,
+      s1: res.data.s1,
+      s2: res.data.s2,
+      s3: res.data.s3,
+      p1: res.data.p1,
+      p2: res.data.p2,
+      p3: res.data.p3,
+    };
   });
 }
 onMounted(() => {

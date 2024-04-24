@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <q-card class="q-mb-xl">
-      <q-form @submit="save">
+      <q-form @submit="save" autocomplete="off">
         <q-card-section>
           <div class="text-h6">Enregistrer un nouveau verbe</div>
         </q-card-section>
@@ -15,7 +15,7 @@
           />
           <q-select
             v-model="newVerb.time"
-            :options="['présent', 'passé simple', 'passé composé']"
+            :options="['présent', 'passé simple', 'passé composé', 'imparfait']"
             label="Temps"
             class="q-mb-md"
           />

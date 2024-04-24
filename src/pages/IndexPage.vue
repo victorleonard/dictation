@@ -43,7 +43,7 @@
         />
       </div>
       <div class="row q-mb-md" v-if="word">
-        <q-form @submit="check">
+        <q-form @submit="check" autocomplete="off">
           <div style="margin: 0 auto; display: flex">
             <q-input
               standout
